@@ -27,6 +27,7 @@
     },
     "extra": {
       "eas": {
+        "owner": "darx",
         "projectId": "698314df-0ae3-4d8a-a7e5-db9ded76ef29"
       }
     },
