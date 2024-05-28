@@ -4,7 +4,6 @@
   },
   "build": {
     "development": {
-      "owner": "darx",
       "developmentClient": true,
       "distribution": "internal",
       "channel": "development",
@@ -13,7 +12,6 @@
       }
     },
     "preview": {
-      "owner": "darx",
       "distribution": "internal",
       "channel": "preview",
       "android": {
@@ -25,9 +23,9 @@
       }
     },
     "production": {
-      "owner": "darx",
       "channel": "production"
     }
+
   },
   "submit": {
     "production": {}

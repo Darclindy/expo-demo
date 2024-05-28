@@ -33,6 +33,7 @@
     "runtimeVersion": "1.0.0",
     "updates": {
       "url": "https://u.expo.dev/698314df-0ae3-4d8a-a7e5-db9ded76ef29"
-    }
+    },
+    "owner": "darx"
   }
 }
