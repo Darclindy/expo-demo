@@ -4,7 +4,7 @@ import ImageViewer from './components/ImageViewer';
 import Button from './components/Button';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
-import EmojiPicker  from './components/EmojiPicker';
+import EmojiPicker from './components/EmojiPicker';
 import EmojiList from './components/EmojiList';
 import IconButton from './components/IconButton';
 import CircleButton from './components/CircleButton';
@@ -46,9 +46,9 @@ export default function App() {
   const onModalClose = () => {
     setIsModalVisible(false)
   }
-  
 
-  const pickImageAsync = async () => { 
+
+  const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       quality: 1,
       allowsEditing: true
@@ -69,17 +69,17 @@ export default function App() {
         <ImageViewer
           placeholderImageSource={PlaceholderImage}
           selectedImage={selectedImage}
-         />
-         {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji}/>}
+        />
+        {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
       </View>
       {showAppOptions ? (
-                <View style={styles.optionsContainer}>
-                <View style={styles.optionsRow}>
-                  <IconButton icon="refresh" label="Reset" onPress={onReset} />
-                  <CircleButton onPress={onAddSticker} />
-                  <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
-                </View>
-              </View>
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionsRow}>
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            <CircleButton onPress={onAddSticker} />
+            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+          </View>
+        </View>
       ) : (
         <View style={styles.footerContainer}>
           <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
@@ -88,7 +88,7 @@ export default function App() {
       )}
 
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose}/>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
     </GestureHandlerRootView>
@@ -99,7 +99,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#25f92e',
     alignItems: 'center',
   },
   imageContainer: {
