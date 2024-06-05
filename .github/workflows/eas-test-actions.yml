@@ -1,0 +1,33 @@
+name: EAS Local Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Expo CLI
+        run: npm install -g expo-cli
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Log in to Expo
+        run: eas login --token ${{ secrets.EXPO_TOKEN }}
+
+      - name: EAS Local Build
+        run: eas build --platform all --local
+        env:
+          EAS_BUILD_PROFILE: preview # 根据需要指定构建配置文件
