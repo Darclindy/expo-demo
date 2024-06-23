@@ -53,9 +53,13 @@ jobs:
         key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           gradle-${{ runner.os }}
+    
 
     - name: Build Android
-      run: ./gradlew assembleRelease
+      run: cd ./ && ./gradlew assembleRelease
+
+    - name: Check Path2
+      run: pwd
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
