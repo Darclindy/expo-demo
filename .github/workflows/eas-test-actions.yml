@@ -10,27 +10,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
+
       - name: Install dependencies
         run: npm install
 
-      - name: Install Expo CLI
-        run: npm install -g expo-cli
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Install EAS CLI
-        run: npm install -g eas-cli
-
-      - name: Log in to Expo
-        run: eas login --token ${{ secrets.EXPO_TOKEN }}
+      - name: Install dependencies
+        run: npm install
 
       - name: Login Suceess
         run: echo "Login Success"
 
       - name: EAS Local Build
-        run: eas build --platform all --local
-        env:
-          EAS_BUILD_PROFILE: preview # 根据需要指定构建配置文件
+        run: eas build --platform android --profile preview --local
