@@ -27,6 +27,9 @@ jobs:
       - name: Log in to Expo
         run: eas login --token ${{ secrets.EXPO_TOKEN }}
 
+      - name: Login Suceess
+        run: echo "Login Success"
+
       - name: EAS Local Build
         run: eas build --platform all --local
         env:
