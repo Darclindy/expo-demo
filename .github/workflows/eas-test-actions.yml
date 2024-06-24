@@ -16,13 +16,28 @@ jobs:
             echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
             exit 1
           fi
+          echo "EXPO_TOKEN is set"
+
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          api-level: 34
+          ndk-version: 26.1.10909125
+          cmake-version: 3.18.1
+          build-tools: 34.0.0
+      
       - name: Install dependencies
         run: npm install
 
